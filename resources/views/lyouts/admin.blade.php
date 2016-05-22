@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+@include('flash::message')
  <div class="container">
      <div class="row">
          <h3 class="text-center header-text">Admin Area</h3>
@@ -35,5 +35,9 @@
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+ <script>
+     $('#flash-overlay-modal').modal();
+ </script>
 </body>
 </html>

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Orders;
+use Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -17,6 +18,8 @@ class OrdersController extends Controller
     public function index()
     {
         //
+        $data = Orders::orderBy('id','desc')->paginate();
+        return view('admin.list',compact('data'));
     }
 
     /**
@@ -27,6 +30,7 @@ class OrdersController extends Controller
     public function create()
     {
         //
+        return view('admin.add');
     }
 
     /**
@@ -38,6 +42,9 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         //
+        $inputs = Request::all();
+
+        Orders::create($inputs);
     }
 
     /**
