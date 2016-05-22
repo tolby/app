@@ -14,13 +14,13 @@
     <br>
 
 
-    <div class="input-group">
-             <span class="input-group-addon">
-               Product
-             </span>
-        {!! Form::text('product',null,['class' => 'form-control']) !!}
-    </div>
-    <br>
+    {{--<div class="input-group">--}}
+             {{--<span class="input-group-addon">--}}
+               {{--Product--}}
+             {{--</span>--}}
+        {{--{!! Form::text('product',null,['class' => 'form-control']) !!}--}}
+    {{--</div>--}}
+    {{--<br>--}}
 
     <div class="input-group">
              <span class="input-group-addon">
@@ -52,7 +52,9 @@
              <span class="input-group-addon">
                Status
              </span>
-        {!! Form::select('status',['Procesing' => 'Procesing','Delivered' => 'Delivered','Payed' => 'Payed','Shipped' => 'Shipped'],null,['class' => 'form-control','placeholder' => 'Choose status','required'=>'required']) !!}
+        {{--{!! Form::select('status',--}}
+        {{--['Procesing' => 'Procesing','Delivered' => 'Delivered','Payed' => 'Payed','Shipped' => 'Shipped'],null,--}}
+        {{--['class' => 'form-control','placeholder' => 'Choose status','required'=>'required']) !!}--}}
     </div>
     <br>
     {!! Form::submit('Add Offer',['class' => 'btn btn-success']) !!}
