@@ -19,7 +19,7 @@ class OrdersController extends Controller
     public function index()
     {
         //
-        $data = Orders::orderBy('id', 'desc')->paginate();
+        $data = Orders::orderBy('id', 'desc')->get();
         return view('admin.list', compact('data'));
     }
 

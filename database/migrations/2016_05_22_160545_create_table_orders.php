@@ -14,13 +14,13 @@ class CreateTableOrders extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('order_code');
-            $table->string('product');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('delivery_date');
-            $table->string('status');
-            $table->timestamps();
+            $table->string('order_code')->default('');
+            $table->string('product')->default('');
+            $table->string('first_name')->default('');
+            $table->string('last_name')->default('');
+            $table->string('delivery_date')->default('');
+            $table->string('status')->default('');
+            $table->nullableTimestamps();
         });
     }
 
