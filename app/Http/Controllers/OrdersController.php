@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Orders;
 use Laracasts\Flash\Flash;
 use Request;
+use League\Csv\Reader;
+use League\Csv\Writer;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use SplFileObject;
 
 class OrdersController extends Controller
 {
@@ -43,13 +46,31 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         //
-        $inputs = Request::all();
+        $inputs = Request::only(['order_code','product','first_name','last_name','delivery_date','status']);
 
         $data = Orders::create($inputs);
         if (!$data) {
             Flash::overlay('There was an error in adding the offer. Contact the administrator', 'Error');
             return redirect('admin');
         }
+
+        // cale fisier csv
+        $fisier = storage_path() . '/databasefile.csv';
+        unlink($fisier);
+        // daca fisierul nu exista il creaza
+        if (!file_exists($fisier)) {
+            Writer::createFromPath(new SplFileObject($fisier, 'a+'), 'w');
+        }
+
+
+        // stocare in fisierul csv
+
+        $toate_inregistrarile = Orders::all();
+        // stocare in fisierul csv
+
+        $writer = Writer::createFromPath(new SplFileObject($fisier));
+        $writer->insertAll($toate_inregistrarile);
+
         Flash::overlay('You have added the order with success', 'Success');
         return redirect('admin');
     }
@@ -78,9 +99,24 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $inputs = Request::all();
+        $inputs = Request::only(['order_code','product','first_name','last_name','delivery_date','status']);
         $data = Orders::findOrFail($id);
         $data->update($inputs);
+        // cale fisier csv
+
+        $fisier = storage_path() . '/databasefile.csv';
+        unlink($fisier);
+        // daca fisierul nu exista il creaza
+        if (!file_exists($fisier)) {
+            Writer::createFromPath(new SplFileObject($fisier, 'a+'), 'w');
+        }
+
+        $toate_inregistrarile = Orders::all();
+        // stocare in fisierul csv
+
+        $writer = Writer::createFromPath(new SplFileObject($fisier));
+        $writer->insertAll($toate_inregistrarile);
+
         Flash::overlay('You have updated with success the order', 'Success');
         return redirect('admin');
     }
@@ -96,6 +132,23 @@ class OrdersController extends Controller
         //
         $data = Orders::findOrFail($id);
         $data->delete();
+        // cale fisier csv
+        $fisier = storage_path() . '/databasefile.csv';
+        unlink($fisier);
+        // daca fisierul nu exista il creaza
+        if (!file_exists($fisier)) {
+            Writer::createFromPath(new SplFileObject($fisier, 'a+'), 'w');
+        }
+
+        $toate_inregistrarile = Orders::all();
+
+
+        // stocare in fisierul csv
+
+        $writer = Writer::createFromPath(new SplFileObject($fisier));
+
+        $writer->insertAll($toate_inregistrarile);
+
         Flash::overlay('You have deleted with succes the order', '');
         return redirect('admin');
     }
@@ -109,8 +162,8 @@ class OrdersController extends Controller
             return redirect('/');
         }
 
-        $d = Orders::where('order_code',$search)->first();
-        return view('results',compact('d'));
+        $d = Orders::where('order_code', $search)->first();
+        return view('results', compact('d'));
 
     }
 }
