@@ -1,7 +1,6 @@
 .row {
     margin-right: 0;
     margin-left: 0;
-
 }
 
 .input-group-addon{
@@ -10,9 +9,20 @@
     min-width: 170px;
     text-align: left;
     border:none;
-
 }
 
 .jumbotron {
-    background: #FCFB98;
+    background: #F6642D;
+}
+.heads{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.header-text {
+    font-family: 'Lato';
+    font-size: 28pt;
+    font-weight: bold;
+    color:#0088cc;
+
 }

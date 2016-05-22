@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
+    <div class="row heads">
         <h3 class="text-center header-text">Track Your Order</h3>
     </div>
     <div class="row">
