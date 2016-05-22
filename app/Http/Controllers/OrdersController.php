@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Orders;
+use Laracasts\Flash\Flash;
 use Request;
 
 use App\Http\Requests;
@@ -45,18 +46,10 @@ class OrdersController extends Controller
         $inputs = Request::all();
 
         Orders::create($inputs);
+        Flash::overlay('You have added the order with success','Success');
+        return redirect('admin');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -67,6 +60,8 @@ class OrdersController extends Controller
     public function edit($id)
     {
         //
+        $data = Orders::findOrFail($id);
+        return view('admin.edit',compact('data'));
     }
 
     /**
@@ -79,6 +74,11 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $inputs = Request::all();
+        $data = Orders::findOrFail($id);
+        $data->update($inputs);
+        Flash::overlay('You have updated with success the order','Success');
+        return redirect('admin');
     }
 
     /**
@@ -90,5 +90,9 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         //
+        $data = Orders::findOrFail($id);
+        $data->delete();
+        Flash::overlay('You have deleted with succes the order','');
+        return redirect('admin');
     }
 }
