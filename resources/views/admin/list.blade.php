@@ -1,7 +1,10 @@
 @extends('lyouts.admin')
 
 @section('content')
-    <a href="{{ route('admin.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Order</a>
+    <a href="{{ route('admin.create') }}" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i> Add Order</a>
+   <div class="clearfix"></div>
+    <br>
+
     @if($data->isEmpty())
     <div class="alert alert-info">
     	 

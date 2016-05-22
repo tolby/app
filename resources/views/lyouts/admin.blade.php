@@ -20,8 +20,8 @@
          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
          	<ul class="list-group">
                 <li class="list-group-item active">Menu</li>
-                <li class="list-group-item">Add Order</li>
-                <li class="list-group-item">Manage Orders</li>
+                <li class="list-group-item"><i class="fa fa-plus-circle"></i> Add Order</li>
+                <li class="list-group-item"><i class="fa fa-plus-circle"></i> Manage Orders</li>
             </ul>
          </div>
 
