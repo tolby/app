@@ -21,8 +21,8 @@
          	<ul class="list-group">
                 <li class="list-group-item active">Menu</li>
 
-                <li class="list-group-item"><i class="fa fa-plus-circle"></i> Add Order</li>
-                <li class="list-group-item"><i class="fa fa-gear"></i> Manage Orders</li>
+                <li class="list-group-item"><a href="{{ route('admin.create') }}"><i class="fa fa-plus-circle"></i> Add Order</a></li>
+                <li class="list-group-item"><a href="{{ route('admin.index') }}"><i class="fa fa-gear"></i> Manage Orders</a></li>
                 <li class="list-group-item"><a href="{!! url('/') !!}"><i class="fa fa-globe"></i> View Site</a></li>
             </ul>
          </div>

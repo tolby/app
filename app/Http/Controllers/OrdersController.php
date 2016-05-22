@@ -99,4 +99,18 @@ class OrdersController extends Controller
         Flash::overlay('You have deleted with succes the order', '');
         return redirect('admin');
     }
+
+    public function search(Request $request)
+    {
+        $search = trim(Request::input('search'));
+
+        if (empty($search)) {
+            Flash::overlay('You must fill the search field with your order code', 'Error');
+            return redirect('/');
+        }
+
+        $d = Orders::where('order_code',$search)->first();
+        return view('results',compact('d'));
+
+    }
 }

@@ -10,8 +10,15 @@
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
 </head>
 <body>
-@yield('content')
+<div class="container">
+    <div class="row">
+        <h3 class="text-center header-text">Track Your Order</h3>
+    </div>
+    <div class="row">
+        @yield('content')
+    </div>
 
+</div>
 
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

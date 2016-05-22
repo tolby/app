@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 
 Route::resource('admin','OrdersController');
+Route::post('search','OrdersController@search');
